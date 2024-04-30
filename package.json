@@ -1,5 +1,15 @@
 {
+  "name": "TaskMaster2",
+  "version": "1.0.0",
+  "description": "A simple task management application built with Rails and Parcel.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel watch app/javascript/application.js --public-url ./",
+    "build": "parcel build app/javascript/application.js --public-url ./"
+  },
   "dependencies": {
     "parcel": "^2.12.0"
-  }
+  },
+  "author": "",
+  "license": "ISC"
 }
