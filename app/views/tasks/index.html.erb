@@ -9,11 +9,11 @@
   </tr>
 
   <% @tasks.each do |task| %>
-    <tr class="<%= 'completed' if task.completed %>">
+    <tr data-task-id="<%= task.id %>" class="<%= 'completed' if task.completed %>">
       <td><%= task.name %></td>
       <td><%= task.details %></td>
       <td><%= task.due_date %></td>
-      <td><%= check_box_tag 'completed', '1', task.completed, onchange: "toggleTaskCompletion(#{task.id})" %></td>
+      <td><%= check_box_tag 'completed', '1', task.completed, id: "completed_#{task.id}", onchange: "toggleTaskCompletion(#{task.id})" %></td>
       <td><%= link_to '表示', task_path(task) %></td>
       <td><%= link_to '編集', edit_task_path(task) %></td>
       <td><%= button_to '削除', task_path(task), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
