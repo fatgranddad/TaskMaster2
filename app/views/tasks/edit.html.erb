@@ -1,0 +1,24 @@
+<h1>タスクを編集</h1>
+
+<%= form_with(model: @task, local: true) do |form| %>
+  <div>
+    <%= form.label :name, "タスク名" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :details, "詳細" %>
+    <%= form.text_area :details %>
+  </div>
+
+  <div>
+    <%= form.label :due_date, "期限日" %>
+    <%= form.date_select :due_date %>
+  </div>
+
+  <div>
+    <%= form.submit "更新する" %>
+  </div>
+<% end %>
+
+<%= link_to '一覧に戻る', tasks_path %>
