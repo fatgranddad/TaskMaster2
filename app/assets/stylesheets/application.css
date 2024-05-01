@@ -62,3 +62,9 @@ body {
   color: red;
   font-size: 14px;
 }
+
+/* タスクが完了している場合にはテキストに取り消し線が引かれ、色が変更される */
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
