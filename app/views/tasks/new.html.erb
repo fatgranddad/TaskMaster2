@@ -1,2 +1,18 @@
-<h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
+<%= form_with model: @task, local: true do |form| %>
+  <div>
+    <%= form.label :name, "タスク名" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :details, "詳細" %>
+    <%= form.text_area :details %>
+  </div>
+  <div>
+    <%= form.label :due_date, "期限日" %>
+    <%= form.date_field :due_date %>
+  </div>
+  <div>
+    <%= form.submit "追加" %>
+  </div>
+<% end %>
+
