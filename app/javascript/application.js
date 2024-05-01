@@ -24,6 +24,9 @@ document.addEventListener('turbo:load', () => {
       const taskId = this.dataset.taskId;
       const taskRow = document.querySelector(`tr[data-task-id="${taskId}"]`); // タスクの行を特定
 
+      console.log('Checkbox changed for task:', taskId); // チェック変更確認用ログ
+      console.log(`Checkbox for task ${taskId} is now ${this.checked ? 'checked' : 'unchecked'}.`); // チェック状態ログ
+
       fetch(`/tasks/${taskId}/toggle_completion`, {
         method: 'PUT',
         headers: {
@@ -34,19 +37,22 @@ document.addEventListener('turbo:load', () => {
       })
       .then(response => {
         if (response.ok) {
+          console.log('Toggle completion response OK'); // レスポンス成功確認用ログ
           if (this.checked) {
             taskRow.classList.add('completed'); // タスクが完了したときにクラスを追加
+            console.log(`'completed' class added to task ${taskId}.`); // クラス追加確認用ログ
           } else {
             taskRow.classList.remove('completed'); // タスクが未完了に戻ったときにクラスを削除
+            console.log(`'completed' class removed from task ${taskId}.`); // クラス削除確認用ログ
           }
         }
         return response.json();
       })
       .then(data => {
-        console.log('Task completion toggled:', data);
+        console.log('Task completion toggled:', data); // 完了状態トグル後のログ
       })
       .catch(error => {
-        console.error('Error toggling task completion:', error);
+        console.error('Error toggling task completion:', error); // エラーログ
       });
     });
   });
