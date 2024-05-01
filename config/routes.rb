@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :tasks, only: [:new, :create]
+  resources :tasks, only: [:new, :create, :index]
 end
