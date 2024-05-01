@@ -22,6 +22,8 @@ document.addEventListener('turbo:load', () => {
   document.querySelectorAll('.task-complete-checkbox').forEach(checkbox => {
     checkbox.addEventListener('change', function() {
       const taskId = this.dataset.taskId;
+      const taskRow = document.querySelector(`tr[data-task-id="${taskId}"]`); // タスクの行を特定
+
       fetch(`/tasks/${taskId}/toggle_completion`, {
         method: 'PUT',
         headers: {
@@ -30,7 +32,16 @@ document.addEventListener('turbo:load', () => {
         },
         body: JSON.stringify({ completed: this.checked })
       })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          if (this.checked) {
+            taskRow.classList.add('completed'); // タスクが完了したときにクラスを追加
+          } else {
+            taskRow.classList.remove('completed'); // タスクが未完了に戻ったときにクラスを削除
+          }
+        }
+        return response.json();
+      })
       .then(data => {
         console.log('Task completion toggled:', data);
       })
@@ -45,6 +56,7 @@ document.addEventListener('turbo:load', () => {
     button.addEventListener('click', function() {
       const taskId = this.dataset.taskId;
       console.log(`Deleting task ${taskId}`);
+      // 追加の削除処理が必要な場合はここに記述
     });
   });
 });
