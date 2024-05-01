@@ -1,0 +1,19 @@
+<h1>タスク詳細</h1>
+
+<p>
+  <strong>タスク名:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>詳細:</strong>
+  <%= @task.details %>
+</p>
+
+<p>
+  <strong>期限日:</strong>
+  <%= @task.due_date %>
+</p>
+
+<%= link_to '編集', edit_task_path(@task) %> |
+<%= link_to '一覧に戻る', tasks_path %>
