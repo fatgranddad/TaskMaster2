@@ -39,9 +39,26 @@ class TasksController < ApplicationController
     redirect_to tasks_path, notice: 'タスクが削除されました。'
   end
 
+  def toggle_completion
+    @task = Task.find(params[:id])
+    if @task.update(completed: toggle_completion_params[:completed])
+      respond_to do |format|
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def task_params
     params.require(:task).permit(:name, :details, :due_date)
+  end
+
+  def toggle_completion_params
+    params.require(:task).permit(:completed)
   end
 end

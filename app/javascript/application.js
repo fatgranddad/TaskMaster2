@@ -12,10 +12,8 @@ document.addEventListener('turbo:load', () => {
   if (addTaskForm) {
     addTaskForm.addEventListener('submit', function(event) {
       event.preventDefault();
-      // ここにタスクを追加するためのAPI呼び出しまたはローカルの処理を記述
       const taskName = document.getElementById('task-name').value;
       console.log(`Adding task: ${taskName}`);
-      // フォームをリセット
       addTaskForm.reset();
     });
   }
@@ -24,8 +22,21 @@ document.addEventListener('turbo:load', () => {
   document.querySelectorAll('.task-complete-checkbox').forEach(checkbox => {
     checkbox.addEventListener('change', function() {
       const taskId = this.dataset.taskId;
-      console.log(`Task ${taskId} completed status: ${this.checked}`);
-      // ここにタスクの完了状態を更新するAPI呼び出しを記述
+      fetch(`/tasks/${taskId}/toggle_completion`, {
+        method: 'PUT',
+        headers: {
+          'X-CSRF-Token': document.querySelector("[name='csrf-token']").getAttribute('content'),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ completed: this.checked })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Task completion toggled:', data);
+      })
+      .catch(error => {
+        console.error('Error toggling task completion:', error);
+      });
     });
   });
 
@@ -34,7 +45,6 @@ document.addEventListener('turbo:load', () => {
     button.addEventListener('click', function() {
       const taskId = this.dataset.taskId;
       console.log(`Deleting task ${taskId}`);
-      // ここにタスクを削除するAPI呼び出しを記述
     });
   });
 });
