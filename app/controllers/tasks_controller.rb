@@ -12,6 +12,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def index
+    @tasks = Task.all  # すべてのタスクを取得
+  end
+
   private
 
   def task_params
