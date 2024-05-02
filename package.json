@@ -8,7 +8,7 @@
     "build": "parcel build app/javascript/application.js --public-url ./"
   },
   "dependencies": {
-    "@hotwired/stimulus": "3.2.2",
+    "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
     "parcel": "^2.12.0"
   },
