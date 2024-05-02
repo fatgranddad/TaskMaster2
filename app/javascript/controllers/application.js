@@ -1,13 +1,14 @@
-import { Application } from "@hotwired/stimulus"
-import GreetingController from "./controllers/greeting_controller";  // 新しいコントローラをインポート
+// Stimulusをローカルインストールされたパッケージからインポート
+import { Application } from "../../node_modules/@hotwired/stimulus/dist/stimulus.min.js";
+import GreetingController from "./greeting_controller";  // 相対パスが正しいか確認してください
 
-const application = Application.start()
+const application = Application.start();
 
-// Configure Stimulus development experience
-application.debug = true  // 開発中はデバッグ情報を有効にする
-window.Stimulus = application
+// 開発中のデバッグ情報を設定
+application.debug = true;
+window.Stimulus = application;
 
-// 既存のコントローラー登録後に新しいコントローラを登録
-application.register("greeting", GreetingController);  // 新しいコントローラを登録
+// GreetingControllerをアプリケーションに登録
+application.register("greeting", GreetingController);
 
-export { application }
+export { application };

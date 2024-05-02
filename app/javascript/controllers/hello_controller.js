@@ -1,5 +1,5 @@
-// Stimulusコントローラーのインポート
-import { Controller } from "@hotwired/stimulus"
+// Stimulusコントローラーのインポート、ローカルパスを指定
+import { Controller } from "../../node_modules/@hotwired/stimulus/dist/stimulus.min.js";
 
 export default class extends Controller {
   static targets = ["complete"];

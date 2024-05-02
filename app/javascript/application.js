@@ -1,6 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 // @hotwired/stimulus をインポートしてアプリケーションを初期化します
-import { Application } from "@hotwired/stimulus"
+import { Application } from "../../node_modules/@hotwired/stimulus/dist/stimulus.umd.js";
 import HelloController from "./controllers/hello_controller";
 
 const application = Application.start();
