@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <!-- Stimulusコントローラを適用した要素を追加 -->
+    <div data-controller="greeting">
+      <button data-action="click->greeting#greet">Greet Me!</button>
+    </div>
+
     <%= yield %>
   </body>
 </html>
