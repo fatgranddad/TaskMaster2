@@ -1,5 +1,5 @@
 // Stimulusをローカルインストールされたパッケージからインポート
-import { Application } from "../../node_modules/@hotwired/stimulus/dist/stimulus.min.js";
+import { Application } from "../../../node_modules/@hotwired/stimulus/dist/stimulus.umd.js"
 import GreetingController from "./greeting_controller";  // 相対パスが正しいか確認してください
 
 const application = Application.start();
