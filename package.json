@@ -4,8 +4,8 @@
   "description": "A simple task management application built with Rails and Parcel.",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel watch app/javascript/application.js --dist-dir public/assets",
-    "build": "parcel build app/javascript/application.js --dist-dir public/assets"
+    "dev": "parcel watch app/javascript/application.js --public-url /assets --dist-dir public/assets",
+    "build": "parcel build app/javascript/application.js --public-url /assets --dist-dir public/assets"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
