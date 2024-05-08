@@ -7,5 +7,8 @@ module.exports = defineConfig({
     "@parcel/reporter-cli",
     "@parcel/reporter-dev-server"
   ],
-  distDir: 'public/assets'
+  defaultConfig: {
+    ...require('@parcel/config-default').defaultConfig,
+    distDir: 'public/assets'
+  }
 });
